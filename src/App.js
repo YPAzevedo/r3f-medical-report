@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import styled from '@emotion/styled';
-import { OrbitControls, softShadows } from "@react-three/drei";
+import { OrbitControls, ContactShadows } from "@react-three/drei";
 import { Canvas } from "react-three-fiber";
 import { Md3DRotation } from "react-icons/md";
 
@@ -11,7 +11,6 @@ import List from "./List";
 import Logo from "./Logo";
 import { actionTypes, useStoreDispatch, useStoreState } from "./store";
 
-softShadows();
 
 export default function App() {
   const { dots } = useStoreState();
@@ -20,9 +19,9 @@ export default function App() {
   return (
     <React.Fragment>
       <Logo width={120} />
-      <Canvas camera={[0, 0, 0]}>
-        <ambientLight intensity={0.3} />
-        <pointLight position={[0, 10, 0]} intensity={0.5} />
+      <Canvas concurrent pixelRatio={[1, 2]} camera={{ position: [5, 5, 20], zoom: 0.75 }}>
+        <ambientLight intensity={0.2} />
+        <spotLight intensity={0.4} angle={0.9} penumbra={1} position={[20, 20, 40]} />
         {dots.map((dot) => (
           <Dot position={dot.position} color={dot.color} />
         ))}
@@ -39,6 +38,7 @@ export default function App() {
               });
             }}
           />
+          <ContactShadows rotation-x={Math.PI / 2} position={[0, -50, 0]} opacity={0.7} width={50} height={50} blur={5} far={60} />
         </Suspense>
         <OrbitControls maxDistance={80} minDistance={40} />
       </Canvas>

@@ -7,10 +7,18 @@ title: Male Full Body Ecorche
 */
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
+import { useFrame } from "react-three-fiber";
 
 export default function Model(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/male.glb");
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime()
+    group.current.rotation.x = Math.cos(t / 4) / 10
+    group.current.rotation.y = Math.sin(t / 4) / 10
+    group.current.position.y = (1 + Math.sin(t / 1.5)) / 10
+  })
 
   return (
     <group {...props} ref={group} >

@@ -18,12 +18,12 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <Logo width={120} />
+      <Logo width={200} />
       <Canvas concurrent pixelRatio={[1, 2]} camera={{ position: [5, 5, 20], zoom: 0.75 }}>
-        <ambientLight intensity={0.2} />
-        <spotLight intensity={0.4} angle={0.9} penumbra={1} position={[20, 20, 40]} />
+        <ambientLight intensity={0.25} />
+        <spotLight intensity={0.6} angle={0.9} penumbra={0.5} position={[40, 10, 10]} />
         {dots.map((dot) => (
-          <Dot position={dot.position} color={dot.color} />
+          <Dot key={dot.color} position={dot.position} color={dot.color} />
         ))}
         <Suspense fallback={null}>
           <Model
@@ -38,7 +38,7 @@ export default function App() {
               });
             }}
           />
-          <ContactShadows rotation-x={Math.PI / 2} position={[0, -50, 0]} opacity={0.7} width={50} height={50} blur={5} far={60} />
+          <ContactShadows rotation-x={Math.PI / 2} position={[0, -50, 0]} opacity={2} width={100} height={100} blur={3} far={60} />
         </Suspense>
         <OrbitControls maxDistance={80} minDistance={40} />
       </Canvas>

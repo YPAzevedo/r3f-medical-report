@@ -58,6 +58,7 @@ const StyledLi = styled.li`
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 const StyledInput = styled.input`

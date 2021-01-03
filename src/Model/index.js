@@ -7,7 +7,7 @@ title: Male Full Body Ecorche
 */
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
-import { useFrame } from "react-three-fiber";
+// import { useFrame } from "react-three-fiber";
 
 export default function Model(props) {
   const group = useRef();

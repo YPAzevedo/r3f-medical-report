@@ -46,6 +46,8 @@ export default function ListItem({ item }) {
 
 // 💅🏻 styles
 const StyledLi = styled.li`
+  display: flex;
+  flex-direction: column;
   width: 250px;
   height: 150px;
   border-left: 5px solid ${(props) => props.color};
@@ -73,6 +75,5 @@ const StyledButton = styled.button`
 `;
 
 const StyledTextArea = styled.textarea`
-  width: 230px;
-  height: 115px;
+  flex: 1;
 `;
